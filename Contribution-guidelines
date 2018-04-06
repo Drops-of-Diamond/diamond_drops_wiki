@@ -1,0 +1,151 @@
+#### Contributor License Agreement
+
+By contributing to this repository, you are giving permission for your contributions to have the same copyright license used by the repository, which is the [Unlicense](https://github.com/Drops-of-Diamond/diamond_drops/blob/develop/LICENSE) since the creation of the repo. Please state in your first commit that you agree to this CLA.
+
+#### Learn to use Git proficiently
+  
+  * Complete [Git Training](https://github.com/charleso/git-training)
+
+#### Install dependencies
+
+  * [Install Rust](https://github.com/rust-lang/book/blob/master/2018-edition/src/ch01-01-installation.md)
+
+  * **Update Rust**
+    ```bash
+    rustup update
+    ```
+
+#### Clone a fork of the repository
+
+  * Fork the repository https://github.com/Drops-of-Diamond/diamond_drops
+
+  * Clone your fork of the repository (replace <USERNAME> below with your Github username):
+    ```bash
+    git clone https://github.com/<USERNAME>/diamond_drops;
+    cd diamond_drops
+    ```
+
+  * Add the "upstream" repository to your remotes and show your list of remotes verbosely
+    ```bash
+    git remote add upstream https://github.com/Drops-of-Diamond/diamond_drops;
+    git remote --verbose
+    ```
+
+  * Change from the "master" branch to the "develop" branch to see the latest features that are being integrated but are not officially ready for production
+
+#### Run and Test the code
+
+  * Build and run the code and provide arguments that it accepts from the CLI
+    ```bash
+    cargo run -- -mode b
+    ```
+
+    * Note: CLI Options available may include:
+      * Proposer Mode: `cargo run -- -mode p`
+      * Collator Mode: `cargo run -- -mode c`
+      * Both Proposer and Collator Mode: `cargo run -- -mode b`
+
+  * Run tests
+    ```bash
+    cargo test
+    ```
+
+#### Contribute changes to an existing remote branch by others
+
+  * Change to the "develop" branch from "master"
+    ```bash
+    git checkout develop
+    ```
+
+  * Fetch the latest changes from an "upstream" branch that is in progress. Let's assume the remote branch is called 'upstream/basic_cli', and map it to your local machine
+    ```bash
+    git fetch upstream basic_cli:basic_cli
+    ```
+
+  * Show branches that now include the branch called 'basic_cli' locally
+    ```bash
+    git branch
+    ```
+
+  * Change to the basic_cli branch
+    ```bash
+    git checkout basic_cli
+    ```
+  
+  * Make changes to the basic_cli branch
+
+  * Prior to pushing changes update the local 'develop' branch and the 'basic_cli' branch with the latest changes from upstream develop
+    * Change to the 'develop' branch and fetch the latest changes from upstream using rebase
+      ```bash
+      git checkout develop
+      ```
+
+    * Fetch the latest changes from 'develop' branch
+      ```bash
+      git pull --rebase upstream develop
+      ```
+
+    * Switch back into the 'basic_cli' branch and rebase it interactively with the latest changes from the 'develop' branch
+      ```bash
+      git checkout basic_cli;
+      git rebase -i develop
+      ```
+
+      * Important Note: If you prefer not to use Git Rebase then use Git Merge (i.e. `git merge develop` instead or a similar equivalent
+
+  * Push the changes that you made to a remote branch called 'basic_cli' on "origin", which is your fork of the "upstream"
+    ```bash
+    git push origin basic_cli
+    ```
+  
+  * Create a Pull Request from your remote branch of the "origin" fork into the 'basic_cli' branch of the "upstream" for another user to accept your proposed changes
+
+#### Contribute new changes in a new branch that you author
+
+  * Change to your local 'develop' branch (integration branch for features). If it does not yet exist then create it with `git checkout -b develop`
+    ```bash
+    git checkout develop
+    ```
+
+  * Fetch latest changes from the "upstream" repository that is in progress
+    ```bash
+    git fetch upstream
+    ```
+  
+  * Create a new branch for your feature or bug fix
+    ```bash
+    git checkout -b <INSERT_YOUR_BRANCH_NAME>
+    ```
+
+  * Make changes to your branch
+
+  * Add and commit changes. Use this [Git Styleguide](https://udacity.github.io/git-styleguide/) for your messages
+    ```bash
+    git add .;
+    git commit -m "<INSERT_YOUR_MESSAGE>"
+    ```
+
+  * Prior to pushing changes update the local 'develop' branch and your current branch with the latest changes from upstream 'develop' branch
+    * Change to 'develop' branch and fetch the latest changes from upstream using rebase
+      ```bash
+      git checkout develop
+      ```
+
+    * Fetch the latest changes from the remote develop branch
+      ```bash
+      git pull --rebase upstream develop
+      ```
+
+    * Switch back into your branch and rebase it interactively with the latest changes from the 'develop' branch
+      ```bash
+      git checkout basic_cli;
+      git rebase -i master
+      ```
+      * Important Note: If you prefer not to use Git Rebase then use Git Merge instead or a similar equivalent
+
+  * Push the changes that you made to a remote branch on "origin" with a name matching the branch you created, where "origin" is your fork of the "upstream" repository
+    ```bash
+    git push origin <INSERT_YOUR_BRANCH_NAME>
+    ```
+  
+  * Create a Pull Request from your remote branch of the "origin" fork into the 'develop' branch of the "upstream" for another user to accept your proposed changes
