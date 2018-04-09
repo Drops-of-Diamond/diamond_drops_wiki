@@ -23,7 +23,7 @@
       "request": "launch",
       "name": "Debug - Mode - Proposer",
       "program": "${workspaceFolder}/target/debug/diamond_drops",
-      "args": "-mode b",
+      "args": "-mode p",
       "cwd": "${workspaceFolder}",
       "terminal": "integrated"
     },
@@ -32,7 +32,7 @@
       "request": "launch",
       "name": "Debug - Mode - Both",
       "program": "${workspaceFolder}/target/debug/diamond_drops",
-      "args": "-mode p",
+      "args": "-mode b",
       "cwd": "${workspaceFolder}",
       "terminal": "integrated"
     }
